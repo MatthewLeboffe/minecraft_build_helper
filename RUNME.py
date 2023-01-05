@@ -3,12 +3,12 @@ from tkinter import ttk
 from tkinter import filedialog
 import tkinter.messagebox
 
-import block_finder
-import output
+import resources.block_finder as block_finder
+import resources.output as output
 
 window = Tk()
 window.title("Minecraft Build Helper")
-window.iconphoto(False, PhotoImage(file = "logo.png"))
+window.iconphoto(False, PhotoImage(file = "resources/logo.png"))
 
 window.columnconfigure([0, 1, 2, 3], pad=20)
 window.rowconfigure([0, 1, 2, 3, 4, 5], pad=5)
