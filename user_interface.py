@@ -4,8 +4,11 @@ from tkinter import filedialog
 import tkinter.messagebox
 
 import block_finder
+import output
 
 window = Tk()
+window.title("Minecraft Build Helper")
+window.iconphoto(False, PhotoImage(file = "logo.png"))
 
 window.columnconfigure([0, 1, 2, 3], pad=20)
 window.rowconfigure([0, 1, 2, 3, 4, 5], pad=5)
@@ -48,16 +51,6 @@ z1.grid(column=3, row=3)
 z2 = ttk.Entry(width=5, justify="center")
 z2.grid(column=3, row=4)
 
-def populate():
-    x1.insert(0, -192)
-    y1.insert(0, 4)
-    z1.insert(0, 63)
-    x2.insert(0, -194)
-    y2.insert(0, 4)
-    z2.insert(0, 65)
-    world.insert(0, "C:/Users/Matth/OneDrive/Desktop/LegoProject/test")
-
-populate()
 def myClick():
     usercoords = [x1.get(), y1.get(), z1.get(), x2.get(), y2.get(), z2.get()]
     coords = ["x1", "y1", "z1", "x2", "y2", "z2"]
@@ -69,11 +62,8 @@ def myClick():
             break
     
     x = block_finder.createList(world.get(), usercoords[:3], usercoords[3:])
-    print(x)
-    for block in x:
-        print(block, x[block])
+    output.generate(x)
 
-sub = ttk.Button(text="Create List", command=myClick).grid(column=2, row=5)
-
+ttk.Button(text="Create List", command=myClick).grid(column=2, row=5)
 
 window.mainloop()
